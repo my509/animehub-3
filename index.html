@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Neon Genesis 2099 | Anime 3D Cyberpunk</title>
+    <!-- Google Fonts: Orbitron cho tiêu đề, Rajdhani cho nội dung -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 cho icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-glitch" data-text="NEON GENESIS 2099">NEON GENESIS 2099</div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loadingBar"></div>
+            </div>
+            <p class="loading-percent" id="loadingPercent">0%</p>
+            <div class="loading-spinner"></div>
+        </div>
+        <div class="loading-particles"></div>
+    </div>
+
+    <!-- ==================== CUSTOM CURSOR ==================== -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- ==================== MUSIC TOGGLE ==================== -->
+    <div class="music-toggle" id="musicToggle">
+        <i class="fas fa-music"></i>
+        <span class="music-waves" id="musicWaves">
+            <span></span><span></span><span></span>
+        </span>
+    </div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text glitch-text" data-text="NEO">NEO</span><span class="logo-accent">GEN</span>
+                <span class="logo-sub">2099</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">HOME</a></li>
+                <li><a href="#anime" class="nav-link">ANIME</a></li>
+                <li><a href="#characters" class="nav-link">CHARACTERS</a></li>
+                <li><a href="#stats" class="nav-link">STATS</a></li>
+                <li><a href="#footer" class="nav-link">CONTACT</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-neon btn-login">LOGIN</button>
+                <button class="btn-neon btn-register">REGISTER</button>
+                <div class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="hero-section">
+        <canvas id="particleCanvas"></canvas>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line" data-text="CYBERPUNK">CYBERPUNK</span>
+                    <span class="title-line accent" data-text="ANIME WORLD">ANIME WORLD</span>
+                    <span class="title-typing" id="typingText"></span>
+                </h1>
+                <p class="hero-description">
+                    Bước vào thế giới anime tương lai năm 2099. Nơi công nghệ hòa quyện cùng nghệ thuật, 
+                    nơi những chiến binh neon chiến đấu trong thành phố ánh sáng.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-neon btn-primary"><i class="fas fa-play"></i> WATCH NOW</button>
+                    <button class="btn-neon btn-secondary"><i class="fas fa-compass"></i> EXPLORE</button>
+                </div>
+            </div>
+            <div class="hero-character" id="heroCharacter">
+                <!-- Nhân vật anime 3D giả lập bằng CSS -->
+                <div class="character-3d" id="character3d">
+                    <div class="char-head">
+                        <div class="char-hair-back"></div>
+                        <div class="char-face">
+                            <div class="char-eye left"></div>
+                            <div class="char-eye right"></div>
+                            <div class="char-mouth"></div>
+                        </div>
+                        <div class="char-hair-front"></div>
+                    </div>
+                    <div class="char-body">
+                        <div class="char-armor"></div>
+                        <div class="char-shoulder left"></div>
+                        <div class="char-shoulder right"></div>
+                    </div>
+                    <div class="char-glow"></div>
+                </div>
+            </div>
+            <!-- Mouse tracking glow effect -->
+            <div class="mouse-glow" id="mouseGlow"></div>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ==================== ANIME CARDS SECTION ==================== -->
+    <section id="anime" class="anime-section">
+        <h2 class="section-title glitch-text" data-text="TOP ANIME">TOP ANIME</h2>
+        <p class="section-subtitle">Những bộ anime đỉnh cao của vũ trụ Neon Genesis</p>
+        <div class="anime-grid" id="animeGrid">
+            <!-- Cards sẽ được tạo bằng JS -->
+        </div>
+    </section>
+
+    <!-- ==================== CHARACTER SHOWCASE ==================== -->
+    <section id="characters" class="characters-section">
+        <h2 class="section-title glitch-text" data-text="LEGENDS">LEGENDS</h2>
+        <p class="section-subtitle">Những huyền thoại trong thế giới cyberpunk</p>
+        <div class="carousel-3d" id="carousel3d">
+            <div class="carousel-container" id="carouselContainer">
+                <!-- Characters được tạo bằng JS -->
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STATISTICS SECTION ==================== -->
+    <section id="stats" class="stats-section">
+        <h2 class="section-title glitch-text" data-text="UNIVERSE">UNIVERSE</h2>
+        <p class="section-subtitle">Số liệu từ thế giới Neon Genesis 2099</p>
+        <div class="stats-grid">
+            <div class="stat-card glass-card">
+                <i class="fas fa-users stat-icon"></i>
+                <span class="stat-number" data-target="2500000">0</span>
+                <span class="stat-label">Chiến binh</span>
+            </div>
+            <div class="stat-card glass-card">
+                <i class="fas fa-planet-ringed stat-icon"></i>
+                <span class="stat-number" data-target="128">0</span>
+                <span class="stat-label">Hành tinh</span>
+            </div>
+            <div class="stat-card glass-card">
+                <i class="fas fa-sword stat-icon"></i>
+                <span class="stat-number" data-target="9999">0</span>
+                <span class="stat-label">Vũ khí huyền thoại</span>
+            </div>
+            <div class="stat-card glass-card">
+                <i class="fas fa-trophy stat-icon"></i>
+                <span class="stat-number" data-target="500">0</span>
+                <span class="stat-label">Giải đấu</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="footer" class="footer">
+        <div class="footer-glow"></div>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <span class="logo-text">NEO</span><span class="logo-accent">GEN</span><span class="logo-sub">2099</span>
+                </a>
+                <p>Website anime 3D cyberpunk hàng đầu vũ trụ. Trải nghiệm thế giới neon tương lai.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Liên kết</h3>
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Anime</a></li>
+                    <li><a href="#">Nhân vật</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Kết nối</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitch"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2099 Neon Genesis. All rights reserved. | Thiết kế bởi AI Anime Studio</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
